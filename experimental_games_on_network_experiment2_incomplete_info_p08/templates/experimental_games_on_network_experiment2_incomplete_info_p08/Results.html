@@ -1,0 +1,22 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    結果発表
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    	あなたは {{ player.decision }} を選びました。
+    <p>
+    </P>
+    	あなたと隣り合っているプレイヤーの数は{{player.num_nghb}}です。
+    	隣り合ってるプレイヤーでACTIVEを選択した人の数は{{ num_active }} です。
+    <p>
+    	したがってあなたの利得は {{ player.payoff }} です.
+    </p>
+
+    {% include 'experimental_games_on_network_experiment2_incomplete_info_p08/Instructions.html' %}
+
+{% endblock %}
