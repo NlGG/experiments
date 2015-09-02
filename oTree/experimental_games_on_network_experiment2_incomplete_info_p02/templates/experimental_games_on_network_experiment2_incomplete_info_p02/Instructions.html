@@ -1,0 +1,41 @@
+{% extends "global/Instructions.html" %}
+
+{% block instructions %}
+<p>
+    毎期、あなたの所属するグループのネットワークがランダムに選ばれる。ネットワークにはBlue netwoek、Red network、Brown networkがある。Blue networkが選ばれる確率PはP=0.2であり、残り二つのネットワークは(1-P)/2の確率でそれぞれ選ばれる。
+</p>
+<p>
+	ネットワークが選ばれると、あなたはA、B、C、D、Eのいずれかの場所に等確率で振り分けられる。このゲームは不完備情報であるので、あなたは隣り合ってるものの人数だけを告知される。
+</p>
+<p>
+	利得はあなたの取った行動と、あなたの隣人が取った行動によって決まる。
+</p>
+<table>
+  <caption>利得表</caption>
+  <tr>
+    <th>ACTIVEを選択した隣人</th>
+    <th>ACTIVE</th>
+    <th>INACTIVE</th>
+  </tr>
+  <tr>
+    <td>3人</td>
+    <td>100点</td>
+    <td>50点</td>
+  </tr>
+  <tr>
+    <td>2人</td>
+    <td>66.66点</td>
+    <td>50点</td>
+  </tr>
+  <tr>
+    <td>1人</td>
+    <td>33.33点</td>
+    <td>50点</td>
+  </tr>
+  <tr>
+    <td>0人</td>
+    <td>0点</td>
+    <td>50点</td>
+  </tr>
+</table>
+{% endblock %}
