@@ -23,7 +23,7 @@ Your app description
 class Constants():
     name_in_url = 'experimental_games_on_network_experiment2_incomplete_info_p02'
     players_per_group = 5
-    num_rounds = 2
+    num_rounds = 40
     places = ['A', 'B', 'C', 'D', 'E']
     p = 0.2
     weight = [p, (1-p)/2, (1-p)/2]
