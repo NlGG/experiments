@@ -99,3 +99,10 @@ class Player(otree.models.BasePlayer):
 
     def role(self):
         return Constants.places[self.id_in_group - 1]  
+
+    def num_nghb(self):
+        return len(Group.network_histry[self.subsession.round_number-1][1][self.role()])
+
+    def network(self):
+        return Group.network_histry[self.subsession.round_number-1][0]
+

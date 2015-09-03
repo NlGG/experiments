@@ -12,8 +12,9 @@ def vars_for_all_templates(self):
     return {'total_rounds': Constants.num_rounds,
             'round_number': self.subsession.round_number,
             'network_type': self.group.network_histry[self.subsession.round_number-1][0] ,
+            'network': self.player.network() ,
             'network_history':self.group.network_histry,
-            'num_nghb': len(self.group.network_histry[self.subsession.round_number-1][1][self.player.role()])
+            'num_nghb': self.player.num_nghb()
             }
 
 class Active_or_Inactive(Page):
