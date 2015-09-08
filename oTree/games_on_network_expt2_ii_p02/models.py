@@ -23,7 +23,7 @@ Your app description
 class Constants():
     name_in_url = 'experimental_games_on_network_experiment2_incomplete_info_p02'
     players_per_group = 5
-    num_rounds = 40
+    num_rounds = 2
     places = ['A', 'B', 'C', 'D', 'E']
     p = 0.2
     weight = [p, (1-p)/2, (1-p)/2]
@@ -100,7 +100,7 @@ class Player(otree.models.BasePlayer):
     def role(self):
         return Constants.places[self.id_in_group - 1]  
 
-    
+
     def num_nghb(self):
         return len(Group.network_histry[self.subsession.round_number-1][1][self.role()])
 
