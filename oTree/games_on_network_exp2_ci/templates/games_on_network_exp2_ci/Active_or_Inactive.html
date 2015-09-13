@@ -6,6 +6,12 @@
 {% endblock %}
 
 {% block content %}
+    <input type="hidden" name="nghb" value="id_nghb" id="id_nghb"/>
+    <script type="text/javascript"><!--
+    var nghb = {{player.num_nghb}}
+    document.getElementById('id_nghb').value=nghb;
+    //--></script>
+
     <p>
     今回は{{ round_number }} 回目のゲームです。
     </p>

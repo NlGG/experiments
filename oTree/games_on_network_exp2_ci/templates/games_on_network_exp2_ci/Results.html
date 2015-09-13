@@ -6,6 +6,11 @@
 {% endblock %}
 
 {% block content %}
+    <input type="hidden" name="networktype" id="id_networktype"/>
+    <script type="text/javascript"><!--
+    var network = "{{network_type}}";
+    document.getElementById('id_networktype').value=network;
+    //--></script>
 
     <p>
     	あなたは{{player.role}}にいます。
