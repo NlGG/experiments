@@ -138,28 +138,22 @@ SESSION_CONFIG_DEFAULTS = {
 
 SESSION_CONFIGS = [
     {
-        'name': 'experimental_games_on_network_experiment3',
-        'display_name': "Experimental Games on Network",
-        'num_demo_participants': 5,
-        'app_sequence': ['experimental_games_on_network_experiment3'],
-    },
-    {
-        'name': 'experimental_games_on_network_experiment2_complete_info',
+        'name': 'games_on_network_exp2_ci',
         'display_name': "Experimental Games on Network_CI",
         'num_demo_participants': 5,
-        'app_sequence': ['experimental_games_on_network_experiment2_complete_info'],
+        'app_sequence': ['games_on_network_exp2_ci'],
     },
     {
-        'name': 'experimental_games_on_network_experiment2_incomplete_info_p02',
+        'name': 'games_on_network_exp2_ii_p02',
         'display_name': "Experimental Games on Network_II_P02",
         'num_demo_participants': 5,
-        'app_sequence': ['experimental_games_on_network_experiment2_incomplete_info_p02'],
+        'app_sequence': ['games_on_network_exp2_ii_p02'],
     },
     {
-        'name': 'experimental_games_on_network_experiment2_incomplete_info_p08',
+        'name': 'games_on_network_exp2_ii_p08',
         'display_name': "Experimental Games on Network_II_P08",
         'num_demo_participants': 5,
-        'app_sequence': ['experimental_games_on_network_experiment2_incomplete_info_p08'],
+        'app_sequence': ['games_on_network_exp2_ii_p08'],
     },
 ]
 

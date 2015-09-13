@@ -14,18 +14,14 @@
     <table class="table" style="width:400px; margin-top:20px;">
         <tr>
             <th>ラウンド</th>
-            <th>ネットワーク</th>
             <th>プレイヤーの位置</th>
-            <th>隣人の数</th>
             <th>プレイヤーの選択</th>
             <th>利得</th>
         </tr>
         {% for p in player_in_all_rounds %}
             <tr>
-                <td>{{ p.subsession.round_number }}</td>
-                <td> {{ network}}</td>
+                 <td>{{ p.subsession.round_number }}</td>
                 <td> {{ p.role }}</td>
-                <td> {{ num_nghb}}</td>
                 <td> {{ p.decision }} </td>
                 <td>　{{ p.payoff }}</td>
             </tr>
@@ -38,6 +34,6 @@
 
     {% next_button %}
 
-    {% include 'experimental_games_on_network_experiment2_complete_info/Instructions.html' %}
+    {% include 'games_on_network_exp2_ci/Instructions.html' %}
 
 {% endblock %}

@@ -11,15 +11,13 @@ def vars_for_all_templates(self):
 
     return {'total_rounds': Constants.num_rounds,
             'round_number': self.subsession.round_number,
-            'network_type': self.group.network_histry[self.subsession.round_number-1][0] ,
-            'network_history':self.group.network_histry,
-            'num_nghb': len(self.group.network_histry[self.subsession.round_number-1][1][self.player.role()])
             }
 
 class Active_or_Inactive(Page):
 
     form_model = models.Player
-    form_fields = ['decision']
+    form_fields = ['decision', 'nghb']
+
 
 class ResultsWaitPage(WaitPage):
 
@@ -30,12 +28,15 @@ class ResultsWaitPage(WaitPage):
         self.group.set_payoffs()
 
 class Results(Page):
+    
+    form_model = models.Group
+    form_fields = ['networktype']
+
     def vars_for_template(self):
 
         self.group.set_payoffs()
 
-        return {'num_active': self.player.payoff*3/100
-                }
+        return {'num_active': self.player.payoff*3/100}
 
 class ResultsSummary(Page):
 
@@ -47,7 +48,6 @@ class ResultsSummary(Page):
         self.group.set_payoffs()
 
         return {'player_in_all_rounds': self.player.in_all_rounds(),
-                'num_active': self.player.payoff*3/100,
                 'total_payoff': sum([p.payoff for p in self.player.in_all_rounds()])}
 
 

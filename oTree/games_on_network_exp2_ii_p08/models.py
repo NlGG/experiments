@@ -21,9 +21,9 @@ Your app description
 """
 
 class Constants():
-    name_in_url = 'experimental_games_on_network_experiment2_incomplete_info_p08'
+    name_in_url = 'games_on_network_exp2_ii_p08'
     players_per_group = 5
-    num_rounds = 40
+    num_rounds = 2
     places = ['A', 'B', 'C', 'D', 'E']
     p = 0.8
     weight = [p, (1-p)/2, (1-p)/2]
@@ -47,39 +47,41 @@ class Group(BaseGroup):
     # <built-in>
     subsession = models.ForeignKey(Subsession)
     # </built-in>
-    active_or_inactive = models.CharField()
-
+    networktype = models.CharField()
+    
     def network_type(self):
-        network_type_group = ["Blue network", "Red network", "Brown network"]
+        network_type_group = ['Blue network', 'Red network', 'Brown network']
         network_type = random.choice(network_type_group, p=Constants.weight)   
         return network_type
 
     def network(self):
         network_type = str(self.network_tp)
-        if network_type == "Blue network":
-            network = {"A":["B"], "B":["A", "C", "E"], "C":["B", "D", "E"], "D":["C", "E"], "E":["B", "C", "D"]}
-        elif network_type == "Red network":
-            network = {"A":["B"], "B":["A", "C"], "C":["B", "D", "E"], "D":["C", "E"], "E":["C", "D"]}
+        if network_type == 'Blue network':
+            network = {'A':['B'], 'B':['A', 'C', 'E'], 'C':['B', 'D', 'E'], 'D':['C', 'E'], 'E':['B', 'C', 'D']}
+        elif network_type == 'Red network':
+            network = {'A':['B'], 'B':['A', 'C'], 'C':['B', 'D', 'E'], 'D':['C', 'E'], 'E':['C', 'D']}
         else:
-            network = {"A":["B"], "B":["A", "C", "E"], "C":["B", "D"], "D":["C", "E"], "E":["B", "D"]}
+            network = {'A':['B'], 'B':['A', 'C', 'E'], 'C':['B', 'D'], 'D':['C', 'E'], 'E':['B', 'D']}
         network_group = [network_type, network]
         return network_group
 
     def set_payoffs(self):
-        network_group = Group.network_histry[self.subsession.round_number-1]
-        network = network_group[1]
+        network_group = self.network_histry[self.subsession.round_number-1]
+        self.network_type = network_group[0]
+        self.network = network_group[1]
         player = [0 for i in range(Constants.players_per_group)]
-        num_active = [0 for i in range(Constants.players_per_group)]
+        active = [0 for i in range(Constants.players_per_group)]
         i = 0 
         for role in Constants.places:
             player[i] = self.get_player_by_role(role)
-            assign_nghb = network[role]
+            assign_nghb = self.network[role]
             for other_role in assign_nghb:
                 if self.get_player_by_role(other_role).decision == 'ACTIVE':
-                    num_active[i] += 1
-            
-            player[i].payoff = float(100*num_active[i]/3)
+                    active[i] += 1
+            player[i].payoff = float(100*active[i]/3)
+            player[i].num_active = active[i]
             i += 1
+
         
 class Player(otree.models.BasePlayer):
 
@@ -87,12 +89,15 @@ class Player(otree.models.BasePlayer):
     group = models.ForeignKey(Group, null=True)
     subsession = models.ForeignKey(Subsession)
     # </built-in>
-
+    
     decision = models.CharField(
         choices=['ACTIVE', 'INACTIVE'],
         doc="""このプレイヤーの選択は""",
         widget=widgets.RadioSelect()
     )
+
+    nghb = models.PositiveIntegerField()
+    num_active = models.PositiveIntegerField()
 
     def other_player(self):      
         return self.get_others_in_group()[0]
@@ -101,8 +106,5 @@ class Player(otree.models.BasePlayer):
         return Constants.places[self.id_in_group - 1]  
 
     def num_nghb(self):
-        return len(Group.network_histry[self.subsession.round_number-1][1][self.role()])
-
-    def network(self):
-        return Group.network_histry[self.subsession.round_number-1][0]
-
+        return  len(Group.network_histry[self.subsession.round_number-1][1][self.role()])
+        

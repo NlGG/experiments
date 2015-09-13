@@ -2,13 +2,19 @@
 {% load staticfiles otree_tags %}
 
 {% block title %}
-    Experimental Games on Network: experiment2_p08: Your Choice
+    Experimental Games on Network: experiment2_p02: Your Choice
 {% endblock %}
 
 {% block content %}
 
+    <input type="hidden" name="nghb" value="id_nghb" id="id_nghb"/>
+    <script type="text/javascript"><!--
+    var nghb = {{player.num_nghb}}
+    document.getElementById('id_nghb').value=nghb;
+    //--></script>
+   
     <p>
-    あなたと隣り合ってる人の数は{{num_nghb}}です。
+    あなたと隣り合ってる人の数は{{player.num_nghb}}です。
     </p>
 
     <div class="form-group required">
@@ -24,7 +30,7 @@
         
     </div>
 
-    {% include 'experimental_games_on_network_experiment2_incomplete_info_p02/Instructions.html' %}
+    {% include 'games_on_network_exp2_ii_p02/Instructions.html' %}
 
 {% endblock %}
 
