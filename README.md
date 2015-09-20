@@ -7,6 +7,8 @@
    [Supplement 2](https://www.econometricsociety.org/content/supplement-experimental-games-networks-underpinnings-behavior-and-equilibrium-selection))
 
 この経済実験を再現した。
+詳しくは論文、ないしゼミでの発表に用いた以下のスライドを参照せよ。
+[スライドシェア](http://www.slideshare.net/masakatooz/experimental-games)
 
 経済実験ソフトはoTreeを用いた。
 
@@ -15,4 +17,6 @@ CSVファイルはその結果である。
 
 以下はデータの分析である。
 
-[実行結果]
+[実行結果](http://nbviewer.ipython.org/github/NlGG/experiments/blob/master/show.ipynb)
+
+
