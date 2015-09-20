@@ -1,0 +1,40 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    結果発表
+{% endblock %}
+
+{% block content %}
+    <input type="hidden" name="networktype" id="id_networktype"/>
+    <script type="text/javascript"><!--
+    var network = "{{network_type}}";
+    document.getElementById('id_networktype').value=network;
+    //--></script>
+
+    <p>
+    	あなたは{{player.role}}にいます。
+    </p>
+    <p>
+    	あなたは {{ player.decision }} を選びました。
+    <p>
+    </P>
+    	あなたと隣り合っているプレイヤーは{{player.nghb}}です。
+    	隣り合ってるプレイヤーでACTIVEを選択した人の数は{{ num_active }} です。
+    <p>
+    	したがってあなたの利得は {{ player.payoff }} です.
+    </p>
+
+     <p>
+        {% if round_number < total_rounds %}
+            "Next" を押して次のゲームに移ってください。
+        {% else %}
+            全てのゲームが終わりました。
+        {% endif %}
+    </p>
+
+    {% next_button %}
+
+    {% include 'network/Instructions.html' %}
+
+{% endblock %}

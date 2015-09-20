@@ -1,0 +1,36 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Experimental Games on Network: experiment2_p02: Your Choice
+{% endblock %}
+
+{% block content %}
+
+    <input type="hidden" name="nghb" value="id_nghb" id="id_nghb"/>
+    <script type="text/javascript"><!--
+    var nghb = {{player.num_nghb}}
+    document.getElementById('id_nghb').value=nghb;
+    //--></script>
+   
+    <p>
+    あなたと隣り合ってる人の数は{{player.num_nghb}}です。
+    </p>
+
+    <div class="form-group required">
+        <tr class="highlight-row-on-hover">
+            <th rowspan="2"><span class="rotate90"></span></th>
+            <td><button name="decision" value="ACTIVE" class="btn btn-primary btn-large">ACTIVE</button></td>
+            
+        </tr>
+        <tr class="highlight-row-on-hover">
+            <td><button name="decision" value="INACTIVE" class="btn btn-primary btn-large">INACTIVE</button></td>
+            
+        </tr>
+        
+    </div>
+
+    {% include 'network2/Instructions.html' %}
+
+{% endblock %}
+

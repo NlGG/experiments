@@ -1,0 +1,43 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results for Rounds 1–{{ total_rounds }}
+{% endblock %}
+
+{% block content %}
+
+    <p>
+        This is a summary of the rounds played.
+    </p>
+
+    <table class="table" style="width:400px; margin-top:20px;">
+        <tr>
+            <th>ラウンド</th>
+            <th>ネットワーク</th>
+            <th>プレイヤーの位置</th>
+            <th>隣人の数</th>
+            <th>プレイヤーの選択</th>
+            <th>利得</th>
+        </tr>
+        {% for p in player_in_all_rounds %}
+            <tr>
+                <td>{{ p.subsession.round_number }}</td>
+                <td> {{ group.network_type}}</td>
+                <td> {{ p.role }}</td>
+                <td> {{ p.num_nghb}}</td>
+                <td> {{ p.decision }} </td>
+                <td>　{{ p.payoff }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <p>
+       あなたは得た利得の合計は {{ total_payoff }}　です。
+    </p>
+
+    {% next_button %}
+
+    {% include 'network8/Instructions.html' %}
+
+{% endblock %}

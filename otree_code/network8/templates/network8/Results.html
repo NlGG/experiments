@@ -1,0 +1,32 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    結果発表
+{% endblock %}
+
+{% block content %}
+    <input type="hidden" name="networktype" id="id_networktype"/>
+    <script type="text/javascript"><!--
+    var network = "{{group.network_type}}";
+    document.getElementById('id_networktype').value=network;
+    //--></script>
+
+    <p>
+    	あなたは {{ player.decision }} を選びました。
+    </p>
+    <p>
+        今回のネットワークは{{group.network_type}}でした。
+    </P>
+    <p>
+    	あなたと隣り合っているプレイヤーの数は{{player.num_nghb}}です。
+    	隣り合ってるプレイヤーでACTIVEを選択した人の数は{{ player.num_active }} です。
+    <p>
+    	したがってあなたの利得は {{ player.payoff }} です.
+    </p>
+
+    {% next_button %}
+
+    {% include 'network8/Instructions.html' %}
+
+{% endblock %}
