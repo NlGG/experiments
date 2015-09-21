@@ -57,6 +57,7 @@ class AnalysisCI():
 		total = self.calculate()
 
 		plt.plot(total[num], "o") 
+		plt.title(role)
 		plt.show()
 
 class AnalysisII():
@@ -103,15 +104,18 @@ class AnalysisII():
 	def show1(self):
 		total = self.calculate()
 		plt.plot(total[0], "o") 
+		plt.title("1")
 		plt.show()
 
 	def show2(self):
 		total = self.calculate()
 		plt.plot(total[1], "o") 
+		plt.title("2")
 		plt.show()
 
 	def show3(self):
 		total = self.calculate()
 		plt.plot(total[2], "o") 
+		plt.title("3")
 		plt.show()
 
