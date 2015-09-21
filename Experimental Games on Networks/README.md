@@ -21,6 +21,6 @@ CSVファイルはその結果である。
 
 以下はデータの分析である。
 
-[実行結果](http://nbviewer.ipython.org/github/NlGG/experiments/blob/master/show.ipynb)
+[実行結果](http://nbviewer.ipython.org/github/NlGG/experiments/blob/master/Experimental%20Games%20on%20Networks/show.ipynb)
 
 
