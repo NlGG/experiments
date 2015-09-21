@@ -7,7 +7,7 @@
    [Supplement 2](https://www.econometricsociety.org/content/supplement-experimental-games-networks-underpinnings-behavior-and-equilibrium-selection))
 
 この経済実験を再現した。
-詳しくは論文、ないしゼミでの発表に用いた以下のスライドを参照せよ。
+詳しくは論文、ないし以下のスライドを参照せよ。
 
 [スライドシェア](http://www.slideshare.net/masakatooz/experimental-games)
 
