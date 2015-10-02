@@ -1,0 +1,73 @@
+
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+var canvas;
+var ctx;
+var cellSize = 10;   // セル1マスのサイズ
+var cols;
+var rows;
+var cells = new Array();
+var my_x_place = {{1_x_place}};
+var my_y_place = 20-{{1_y_place}};
+var other_x_place = {{2_x_place}};
+var other_y_place = 20-{{2_y_place}};
+
+ 
+window.onload = function()
+{
+    canvas = document.getElementById('canvas');
+    ctx = canvas.getContext('2d');
+    cols = Math.floor(canvas.width / cellSize);
+    rows = Math.floor(canvas.height / cellSize);
+    initCells();
+    drawCell1(my_x_place, my_y_place);
+    drawCell2(other_x_place, other_y_place)
+};
+ 
+// 初期化
+function initCells(){
+    ctx.fillStyle = 'rgb(60, 60, 60)';
+    ctx.fillRect(0,0, canvas.width, canvas.height);
+    for(col=0;col<cols;col++){
+        cells[col] = new Array();
+        for(row=0;row<rows;row++){
+            cells[col][row] = 0;
+        }
+    }
+    redraw();
+}
+ 
+// 全体を再描画
+function redraw(){
+    for(col=0;col<cols;col++){
+        for(row=0;row<rows;row++){
+            drawCell(col, row);
+        }
+    }
+}
+ 
+// セルを描画
+function drawCell(x, y){
+    ctx.fillStyle = "rgb(40,40,40)";
+    ctx.fillRect(x * cellSize, y * cellSize,
+        cellSize - 1, cellSize - 1);
+}
+
+function drawCell1(x, y){
+    ctx.fillStyle = "rgb(156, 255,0)";
+    ctx.fillRect(x * cellSize, y * cellSize,
+        cellSize - 1, cellSize - 1);
+}
+
+function drawCell2(x, y){
+    ctx.fillStyle = "rgb(156, 255,0)";
+    ctx.fillRect(x * cellSize, y * cellSize,
+        cellSize - 1, cellSize - 1);
+}
+
+</script>
+</head>
+<body>
+<canvas id="canvas" width="510" height="210"></canvas>
+</body>

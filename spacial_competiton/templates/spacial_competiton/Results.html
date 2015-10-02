@@ -1,0 +1,19 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Results
+{% endblock %}
+
+{% block content %}
+ 	<table class="table-condensed" style="width:500px; margin-top:20px;">
+        <tr><td>プレイヤー1の利得:</td><td>{{ p1_payoff }}</td></tr>
+        <tr><td>プレイヤー2の利得:</td><td>{{ p2_payoff }}</td></tr>
+    </table>
+  
+    {% next_button %}
+    
+    {% include 'spacial_competiton/LocationResults.html' %}
+
+
+{% endblock %}

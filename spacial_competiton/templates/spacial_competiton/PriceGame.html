@@ -1,0 +1,18 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Price Game
+{% endblock %}
+
+{% block content %}
+
+{% formfield player.price with label="いくらで商品を売りたいですか（実際の販売価格はこの価格に輸送コストが加わる）?" %}
+
+{% include 'spacial_competiton/LocationResults.html' %}
+
+    {% next_button %}
+
+{% endblock %}
+
+

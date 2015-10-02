@@ -1,0 +1,27 @@
+{% extends "global/Base.html" %}
+{% load staticfiles otree_tags %}
+
+{% block title %}
+    Choice Game
+{% endblock %}
+
+{% block content %}
+
+<div class="form-group required">
+    <tr class="highlight-row-on-hover">
+        <th rowspan="2"><span class="rotate90"></span></th>
+        <td><button name="type" value="SIM" class="btn btn-primary btn-large">SIM</button></td>
+        
+    </tr>
+    <tr class="highlight-row-on-hover">
+        <td><button name="type" value="SEQ" class="btn btn-primary btn-large">SEQ</button></td>
+        
+    </tr>
+        
+</div>
+
+{% include 'spacial_competiton/LocationResults.html' %}
+
+    {% next_button %}
+
+{% endblock %}
